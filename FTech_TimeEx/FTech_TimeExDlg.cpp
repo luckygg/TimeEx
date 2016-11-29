@@ -6,7 +6,7 @@
 #include "FTech_TimeEx.h"
 #include "FTech_TimeExDlg.h"
 #include "afxdialogex.h"
-#include "TimeEx.h"
+
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

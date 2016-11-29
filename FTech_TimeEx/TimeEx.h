@@ -10,7 +10,7 @@
 #pragma once
 
 #ifdef _UNICODE
-bool CStringToChar(const CString strIn, char* pchOut)
+static bool CStringToChar(const CString strIn, char* pchOut)
 {
 	if (pchOut == NULL) return false;
 
@@ -20,7 +20,7 @@ bool CStringToChar(const CString strIn, char* pchOut)
 	return true;
 }
 #else
-bool CStringToChar(CString strIn, char* pchOut)
+static bool CStringToChar(CString strIn, char* pchOut)
 {
 	if (pchOut == NULL) return false;
 
@@ -31,7 +31,7 @@ bool CStringToChar(CString strIn, char* pchOut)
 
 #endif
 
-CString WriteText(CString strFormat, ...);
+static CString WriteText(CString strFormat, ...);
 class CTimeEx
 {
 public :
@@ -78,7 +78,7 @@ public :
 	}
 };
 
-CString WriteText(CString strFormat, ...)
+static CString WriteText(CString strFormat, ...)
 {
 	CString strValue=_T("");
 	char szFmt[MAX_PATH] = {0,};

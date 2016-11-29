@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+#include "TimeEx.h"
 
 // CFTech_TimeExDlg dialog
 class CFTech_TimeExDlg : public CDialogEx
