@@ -6,7 +6,7 @@
 #include "FTech_TimeEx.h"
 #include "FTech_TimeExDlg.h"
 #include "afxdialogex.h"
-
+#include "TimeEx.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -32,8 +32,7 @@ void CFTech_TimeExDlg::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CFTech_TimeExDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_BTN_STOPWATCH, &CFTech_TimeExDlg::OnBnClickedBtnStopwatch)
-	ON_BN_CLICKED(IDC_BTN_LAP, &CFTech_TimeExDlg::OnBnClickedBtnLap)
+	ON_BN_CLICKED(IDC_BTN_INFO, &CFTech_TimeExDlg::OnBnClickedBtnInfo)
 END_MESSAGE_MAP()
 
 
@@ -89,46 +88,10 @@ HCURSOR CFTech_TimeExDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
-
-
-void CFTech_TimeExDlg::OnBnClickedBtnStopwatch()
+void CFTech_TimeExDlg::OnBnClickedBtnInfo()
 {
-	CString caption=L"";
-	GetDlgItemText(IDC_BTN_STOPWATCH, caption);
-
-	if (caption == L"Start")
-	{
-		CListBox* pLb = (CListBox*)GetDlgItem(IDC_LIST1);	
-		pLb->ResetContent();
-
-		m_SW.Start();
-		SetDlgItemText(IDC_BTN_STOPWATCH, L"Stop");
-
-		GetDlgItem(IDC_BTN_LAP)->EnableWindow(TRUE);
-	}
-	else if (caption == L"Stop")
-	{
-		m_SW.Stop();
-
-		double t = m_SW.GetTimeMs();
-		CString tmp=L"";
-		tmp.Format(L"%.3f ms",t);
-		SetDlgItemText(IDC_LB_TIME, tmp);
-
-		SetDlgItemText(IDC_BTN_STOPWATCH, L"Start");
-
-		GetDlgItem(IDC_BTN_LAP)->EnableWindow(FALSE);
-	}
-}
-
-
-void CFTech_TimeExDlg::OnBnClickedBtnLap()
-{
-	m_SW.Stop();
-	double t = m_SW.GetTimeMs();
-	CString tmp=L"";
-	tmp.Format(L"%.3f ms",t);
-
-	CListBox* pLb = (CListBox*)GetDlgItem(IDC_LIST1);
-	pLb->AddString(tmp);
+	CString time = CTimeEx::GetCurrentTimeInfo(_T("%02d:%02d:%02d"));
+	CString time2 = CTimeEx::GetCurrentTimeInfo(_T("%02d:%02d:%02d:%02d"),true);
+	CString date = CTimeEx::GetCurrentDateInfo(_T("%02d-%02d-%02d"));
+	CString date2 = CTimeEx::GetCurrentDateTimeInfo(_T("%02d-%02d-%02d, %02d:%02d:%02d:%02d"),true);
 }

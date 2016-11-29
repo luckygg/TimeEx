@@ -3,7 +3,7 @@
 //
 
 #pragma once
-#include "TimeEx.h"
+
 
 // CFTech_TimeExDlg dialog
 class CFTech_TimeExDlg : public CDialogEx
@@ -19,7 +19,6 @@ public:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
 public :
-	CTimeEx m_SW;
 
 // Implementation
 protected:
@@ -31,6 +30,5 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedBtnStopwatch();
-	afx_msg void OnBnClickedBtnLap();
+	afx_msg void OnBnClickedBtnInfo();
 };
